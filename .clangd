@@ -1,7 +1,7 @@
 CompileFlags:
   Compiler: clang++
   Add:
-    - -std=c++17
+    - -std=c++23
     - -mavx2
     - -I/usr/include/pcl-1.15
     - -I/usr/include/eigen3
