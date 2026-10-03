@@ -1,0 +1,29 @@
+# Build
+build/
+cmake-build-*/
+out/
+
+# CMake generated
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Compiler
+*.o
+*.a
+*.so
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+.idea/
+
+# Large datasets
+data/
+datasets/
+*.bag
+*.db3
+*.mcap
+
+# Misc
+.DS_Store
