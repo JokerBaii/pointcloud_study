@@ -16,6 +16,8 @@ cmake_install.cmake
 # IDE
 .vscode/*
 !.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 .idea/
 
 # Large datasets
@@ -27,3 +29,6 @@ datasets/
 
 # Misc
 .DS_Store
+
+# clangd cache
+.cache/

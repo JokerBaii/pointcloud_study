@@ -1,0 +1,7 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label": "Clang: configure", "type": "process", "command": "cmake", "args": ["-S", ".", "-B", "build", "-DCMAKE_CXX_COMPILER=/usr/bin/clang++", "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"], "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []},
+    {"label": "Clang: build", "type": "process", "command": "cmake", "args": ["--build", "build", "--parallel", "4"], "options": {"cwd": "${workspaceFolder}"}, "dependsOn": "Clang: configure", "problemMatcher": "$gcc", "group": {"kind": "build", "isDefault": true}}
+  ]
+}
