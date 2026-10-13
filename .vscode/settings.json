@@ -1,4 +1,10 @@
 {
+  "github.copilot.enable": {
+    "*": false,
+    "c": false,
+    "cpp": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": false,
   "clangd.path": "/usr/bin/clangd",
   "clangd.arguments": [
     "--background-index",
@@ -14,6 +20,10 @@
   },
   "cmake.buildDirectory": "${workspaceFolder}/build",
   "cmake.sourceDirectory": "${workspaceFolder}",
+  "cmake.modifyLists.addNewSourceFiles": "yes",
+  "cmake.modifyLists.targetSelection": "auto",
+  "cmake.modifyLists.targetCommandInvocationSelection": "auto",
+  "cmake.modifyLists.scopeSelection": "auto",
   "[c][cpp]": {
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     "editor.formatOnSave": true,

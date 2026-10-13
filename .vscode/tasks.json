@@ -2,6 +2,48 @@
   "version": "2.0.0",
   "tasks": [
     {"label": "Clang: configure", "type": "process", "command": "cmake", "args": ["-S", ".", "-B", "build", "-DCMAKE_CXX_COMPILER=/usr/bin/clang++", "-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"], "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []},
-    {"label": "Clang: build", "type": "process", "command": "cmake", "args": ["--build", "build", "--parallel", "4"], "options": {"cwd": "${workspaceFolder}"}, "dependsOn": "Clang: configure", "problemMatcher": "$gcc", "group": {"kind": "build", "isDefault": true}}
+    {"label": "Clang: build", "type": "process", "command": "cmake", "args": ["--build", "build", "--parallel", "4"], "options": {"cwd": "${workspaceFolder}"}, "dependsOn": "Clang: configure", "problemMatcher": "$gcc", "group": {"kind": "build", "isDefault": true}},
+    {
+      "label": "Point cloud: run Bunny",
+      "type": "process",
+      "command": "${workspaceFolder}/build/bunny_reconstruct",
+      "args": [
+        "data/bunny/reconstruction/bun_zipper.ply",
+        "--voxel", "0.002",
+        "--normal-k", "24",
+        "--output", "out/bunny_cloud.ply",
+        "--normals", "out/bunny_normals.ply",
+        "--pcd", "out/bunny_cloud.pcd"
+      ],
+      "options": {"cwd": "${workspaceFolder}"},
+      "dependsOn": "Clang: build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Point cloud: view Bunny",
+      "type": "process",
+      "command": "pcl_viewer",
+      "args": ["out/bunny_cloud.pcd", "-ps", "2"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "dependsOn": "Point cloud: run Bunny",
+      "problemMatcher": []
+    },
+    {
+      "label": "Point cloud: run ICP demo",
+      "type": "process",
+      "command": "${workspaceFolder}/build/bunny_reconstruct",
+      "args": [
+        "data/demo_target.ply", "data/demo_source.ply",
+        "--voxel", "0.002",
+        "--max-dist", "0.015",
+        "--normal-k", "20",
+        "--output", "out/demo_merged.ply",
+        "--normals", "out/demo_normals.ply",
+        "--pcd", "out/demo_merged.pcd"
+      ],
+      "options": {"cwd": "${workspaceFolder}"},
+      "dependsOn": "Clang: build",
+      "problemMatcher": []
+    }
   ]
 }
